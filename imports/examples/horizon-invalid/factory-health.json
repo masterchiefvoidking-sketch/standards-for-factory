@@ -1,0 +1,38 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "horizon-wrong",
+  "status": "unhealthy",
+  "signals": [
+    {
+      "id": "signal.build",
+      "name": "Build",
+      "status": "error",
+      "message": "Build failed — missing configuration",
+      "category": "build"
+    },
+    {
+      "id": "signal.tests",
+      "name": "Tests",
+      "status": "error",
+      "message": "Test suite did not pass",
+      "category": "test"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "factory-standards",
+      "required": true,
+      "status": "available",
+      "version": "1.0.0"
+    },
+    {
+      "name": "citadel",
+      "required": false,
+      "status": "available",
+      "version": "1.0.0",
+      "notes": "Declared but not implemented — fake live integration"
+    }
+  ]
+}

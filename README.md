@@ -47,11 +47,24 @@ Package naming convention: `{tenant}-factory-certification.zip` (e.g. `citadel-f
 2. Run the Tenant Certification Protocol (see docs/TENANT_REPOSITORY_PROTOCOL.md)
 3. Generate {tenant}-factory-certification.zip
 4. Place the zip in factory-standards/imports/{tenant}/
-5. Validate against schemas/
-6. Review results in factory-report.md
+5. Validate: npm run validate:package -- imports/{tenant}
+6. Review validation-report.md and factory-report.md
 7. Repair tenant per docs/REPAIR_ORDER.md
 8. Repeat until qualified
 ```
+
+## Validation
+
+factory-standards includes a certification package validator:
+
+```bash
+npm install
+npm run validate:package -- imports/examples/citadel-valid
+npm run validate:examples
+npm test
+```
+
+See [docs/VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md).
 
 ## Documentation
 
@@ -64,6 +77,9 @@ Package naming convention: `{tenant}-factory-certification.zip` (e.g. `citadel-f
 | [CITADEL_ARCHIVE_HANDOFF.md](docs/CITADEL_ARCHIVE_HANDOFF.md) | Citadel archive optional handoff |
 | [QUALIFICATION_LOOP_STANDARD.md](docs/QUALIFICATION_LOOP_STANDARD.md) | Qualification loop definition |
 | [REPAIR_ORDER.md](docs/REPAIR_ORDER.md) | Priority order for repairs |
+| [VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md) | Package validation inspector |
+| [CERTIFICATION_PACKAGE_LAYOUT.md](docs/CERTIFICATION_PACKAGE_LAYOUT.md) | Required package file layout |
+| [VALIDATION_SCORING.md](docs/VALIDATION_SCORING.md) | Readiness scoring model |
 
 ## Known ecosystem repos
 

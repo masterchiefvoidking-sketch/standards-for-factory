@@ -27,7 +27,8 @@
   "doesNotOwn": [
     "archive.storage",
     "tenant.orchestration",
-    "qualification.tracking"
+    "qualification.tracking",
+    "toolbelt.core"
   ],
   "capabilities": [
     "toolbelt.core",

@@ -16,6 +16,21 @@
     "commitSha": "f1e2d3c4b5a6978012345678abcdef0123456789",
     "packageName": "factory-factory-certification.zip"
   },
+  "mission": {
+    "statement": "Factory orchestrates tenant certification import and qualification tracking.",
+    "scope": "Standards enforcement and import; not tenant application features."
+  },
+  "owns": [
+    "certification.import",
+    "tenant.registry",
+    "qualification.tracking",
+    "standards.enforcement"
+  ],
+  "doesNotOwn": [
+    "archive.storage",
+    "toolbelt.core",
+    "tenant.app.features"
+  ],
   "capabilities": [
     "certification.import",
     "tenant.registry",

@@ -1,0 +1,31 @@
+{
+  "name": "factory-standards",
+  "version": "1.0.0",
+  "description": "Standards repository and certification package validator for the Factory ecosystem",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src scripts tests",
+    "test": "vitest run",
+    "validate:package": "tsx scripts/validate-certification-package.ts",
+    "validate:examples": "tsx scripts/validate-examples.ts"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

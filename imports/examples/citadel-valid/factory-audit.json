@@ -1,0 +1,81 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "citadel",
+  "auditId": "audit-20260705-120000",
+  "status": "partial",
+  "summary": {
+    "total": 8,
+    "passed": 6,
+    "failed": 1,
+    "skipped": 0,
+    "warnings": 1
+  },
+  "checks": [
+    {
+      "id": "check.structure",
+      "category": "structure",
+      "title": "Repository structure valid",
+      "status": "pass",
+      "evidence": "src/, docs/, and build config present"
+    },
+    {
+      "id": "check.secrets",
+      "category": "security",
+      "title": "No secrets in repository",
+      "status": "pass",
+      "evidence": "Secrets scan clean"
+    },
+    {
+      "id": "check.schema",
+      "category": "schema",
+      "title": "Certification artifacts validate",
+      "status": "pass",
+      "evidence": "All JSON validates against factory-standards schemas"
+    },
+    {
+      "id": "check.integration.horizon",
+      "category": "integration",
+      "title": "Horizon integration implemented",
+      "status": "fail",
+      "evidence": "Declared but no horizon client code found",
+      "remediation": "Implement horizon client or remove from implemented list",
+      "repairPriority": 3
+    },
+    {
+      "id": "check.archive-export",
+      "category": "integration",
+      "title": "Citadel archive export functional",
+      "status": "pass",
+      "evidence": "factory-citadel-archive.json generated with valid checksum"
+    },
+    {
+      "id": "check.build",
+      "category": "health",
+      "title": "Build succeeds",
+      "status": "pass",
+      "evidence": "npm run build exit 0"
+    },
+    {
+      "id": "check.tests",
+      "category": "health",
+      "title": "Test suite passes",
+      "status": "warn",
+      "evidence": "2 flaky tests in archive module",
+      "repairPriority": 4
+    },
+    {
+      "id": "check.docs",
+      "category": "documentation",
+      "title": "README documents certification",
+      "status": "pass",
+      "evidence": "README includes factory-certification section"
+    }
+  ],
+  "auditor": {
+    "tool": "cursor",
+    "version": "1.0.0",
+    "operator": "factory-standards-example"
+  }
+}

@@ -16,6 +16,16 @@
     "commitSha": "COMMIT_SHA",
     "packageName": "tenant-slug-factory-certification.zip"
   },
+  "mission": {
+    "statement": "Clear statement of what this tenant does in the Factory ecosystem",
+    "scope": "Optional scope boundary"
+  },
+  "owns": [
+    "responsibility.this-tenant-owns"
+  ],
+  "doesNotOwn": [
+    "responsibility.other-tenant-owns"
+  ],
   "capabilities": [
     "capability.example"
   ],

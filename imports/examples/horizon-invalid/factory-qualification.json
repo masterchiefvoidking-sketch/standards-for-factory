@@ -1,0 +1,49 @@
+{
+  "protocol": "factory.qualification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "horizon",
+  "loopId": "qual-20260705-120000",
+  "status": "unqualified",
+  "iteration": 1,
+  "criteria": [
+    {
+      "id": "crit.manifest-valid",
+      "name": "Manifest validates against schema",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.audit-pass",
+      "name": "Audit status is pass",
+      "required": true,
+      "result": "unmet",
+      "evidence": "Build and test checks failed"
+    },
+    {
+      "id": "crit.health-acceptable",
+      "name": "Health status is healthy or degraded",
+      "required": true,
+      "result": "unmet",
+      "evidence": "Health status unhealthy"
+    },
+    {
+      "id": "crit.report-complete",
+      "name": "factory-report.md present and complete",
+      "required": true,
+      "result": "met"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "blocker.build-fail",
+      "description": "Build fails without env configuration",
+      "repairRef": "check.build"
+    },
+    {
+      "id": "blocker.tests-fail",
+      "description": "Test suite does not pass",
+      "repairRef": "check.tests"
+    }
+  ]
+}

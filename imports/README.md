@@ -20,7 +20,7 @@ imports/
 
 1. Tenant repo generates `{tenant}-factory-certification.zip`.
 2. Copy or extract into `imports/{tenant}/`.
-3. Validate all required files against `schemas/`.
+3. Validate: `npm run validate:package -- imports/{tenant}/`
 4. Record validation results (manual or via Factory import tooling).
 5. If validation fails, follow `docs/REPAIR_ORDER.md` in the tenant repo and re-submit.
 

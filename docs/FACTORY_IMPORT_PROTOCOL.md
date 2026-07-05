@@ -67,7 +67,13 @@ Validate each JSON file against corresponding schema in `schemas/`:
 | factory-objects.json | factory-object.schema.json |
 | factory-citadel-archive.json | factory-citadel-archive.schema.json |
 
-`factory-report.md` is validated for presence and structure; metadata may be embedded in qualification or audit cross-references.
+**Automated validation** (recommended):
+
+```bash
+npm run validate:package -- imports/{tenant}
+```
+
+This runs the full validation engine and writes `validation-report.md` and `validation-report.json`. See [VALIDATION_ENGINE.md](VALIDATION_ENGINE.md).
 
 ### 5. Cross-check
 

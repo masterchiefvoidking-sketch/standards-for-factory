@@ -10,6 +10,9 @@
     "generatedAt",
     "tenant",
     "repository",
+    "mission",
+    "owns",
+    "doesNotOwn",
     "capabilities",
     "integrations"
   ],
@@ -78,6 +81,36 @@
           "description": "Certification zip name, e.g. citadel-factory-certification.zip"
         }
       }
+    },
+    "mission": {
+      "type": "object",
+      "required": ["statement"],
+      "additionalProperties": false,
+      "properties": {
+        "statement": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Clear statement of what this tenant does in Factory"
+        },
+        "scope": {
+          "type": "string",
+          "description": "Optional scope boundary note"
+        }
+      }
+    },
+    "owns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Responsibilities this tenant owns"
+    },
+    "doesNotOwn": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Responsibilities explicitly outside this tenant's scope"
     },
     "capabilities": {
       "type": "array",
