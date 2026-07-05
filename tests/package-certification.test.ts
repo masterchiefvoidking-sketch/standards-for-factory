@@ -8,7 +8,7 @@ import {
   packageCertification,
   prePackageChecks,
 } from "../src/package-certification.js";
-import { REQUIRED_FILES } from "../src/types.js";
+import { REQUIRED_FILES, OPTIONAL_FILES } from "../src/types.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const tempDirs: string[] = [];
@@ -42,6 +42,12 @@ const manifest = {
     modes: { factory: "manual" },
   },
   standardsVersion: "1.0.0",
+  lifecycle: {
+    state: "certified",
+    qualificationPercent: 96,
+    certified: true,
+    updatedAt: "2026-07-05T12:00:00Z",
+  },
 };
 
 function fullPackage(): Record<string, string> {
@@ -145,5 +151,19 @@ describe("kit required files constant", () => {
   it("matches certification package layout", () => {
     expect(REQUIRED_FILES).toContain("factory-manifest.json");
     expect(REQUIRED_FILES).toHaveLength(5);
+    expect(OPTIONAL_FILES).toContain("compatibility.json");
+    expect(OPTIONAL_FILES).toHaveLength(4);
+  });
+});
+
+describe("kit packager delegation", () => {
+  it("kit script delegates to canonical packager", () => {
+    const kitScript = fs.readFileSync(
+      path.join(ROOT, "tenant-certification-kit/scripts/package-certification.ts"),
+      "utf-8"
+    );
+    expect(kitScript).toContain("resolveCanonicalCli");
+    expect(kitScript).toContain("runPackageCli");
+    expect(kitScript).not.toContain("const REQUIRED = [");
   });
 });

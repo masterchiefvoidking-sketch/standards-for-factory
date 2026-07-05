@@ -19,14 +19,21 @@ Each dimension is scored **0–100**.
 
 ```text
 80% weight → required files present (5 files)
-20% weight → optional files present (3 files)
+20% weight → optional files present (4 files)
 ```
+
+Optional files counted:
+
+1. `compatibility.json` (recommended)
+2. `factory-events.json`
+3. `factory-objects.json`
+4. `factory-citadel-archive.json`
 
 | Required present | Optional present | Score |
 |------------------|------------------|-------|
-| 5/5 | 3/3 | 100 |
-| 5/5 | 0/3 | 80 |
-| 3/5 | 0/3 | 48 |
+| 5/5 | 4/4 | 100 |
+| 5/5 | 0/4 | 80 |
+| 3/5 | 0/4 | 48 |
 
 ## Schema Validity (0–100)
 
@@ -35,6 +42,8 @@ Each dimension is scored **0–100**.
 ```
 
 Files that fail JSON parse count as schema failures. Each file is validated against its mapped schema in `schemas/`.
+
+`factory-report.md` is not JSON — checked for presence only.
 
 ## Mission Clarity (0–100)
 
@@ -71,6 +80,21 @@ Floor: 0. Ceiling: 100.
 | Archive present and schema-valid | 100 |
 | Archive present with errors | 100 − (25 × error count), min 0 |
 
+## Lifecycle warnings (do not change pass/fail alone)
+
+| Warning | Trigger |
+|---------|---------|
+| `lifecycle.certified-mismatch` | `certified: true` but errors exist, or `certified: false` but pass |
+| `lifecycle.qualification-drift` | `qualificationPercent` differs from overall score by >10 |
+
+## Compatibility warnings and errors
+
+| Code | Severity | Trigger |
+|------|----------|---------|
+| `compatibility.missing` | warning | No `compatibility.json` |
+| `compatibility.below-matrix` | error | Declared version below matrix minimum |
+| `compatibility.tenant-mismatch` | error | `tenantId` ≠ manifest |
+
 ## Overall (0–100)
 
 ```text
@@ -102,11 +126,15 @@ Scores are guidance. **Pass/fail** is determined solely by error count.
 
 ### citadel-valid (PASS)
 
-Typical scores: Completeness 100+, Schema 100, Mission 100, Factory ~85 (partial audit), Citadel 100.
+Typical scores: Completeness 100, Schema 100, Mission 100, Factory ~85 (partial audit), Citadel 100.
 
 ### horizon-invalid (FAIL)
 
-Typical scores: Completeness 80, Schema 100, Mission 85 (overlap warning), Factory ~45, Citadel 100.
+Typical scores: Completeness 85+, Schema 100, Mission 85 (overlap warning), Factory ~45, Citadel 100.
+
+### examples/horizon (FAIL — intentional)
+
+Fails on `health.unhealthy` — reference unqualified package.
 
 ---
 

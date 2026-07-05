@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint src scripts tests",
     "test": "vitest run",
+    "package:certification": "tsx scripts/package-certification.ts",
+    "validate:zips": "tsx scripts/validate-import-zips.ts",
     "validate:package": "tsx scripts/validate-certification-package.ts",
     "validate:examples": "tsx scripts/validate-examples.ts",
     "kit:check": "tsx scripts/kit-check.ts",

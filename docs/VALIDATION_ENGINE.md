@@ -12,13 +12,19 @@ npm run validate:package -- imports/examples/citadel-valid
 Validate a zip:
 
 ```bash
-npm run validate:package -- imports/citadel/citadel-factory-certification.zip
+npm run validate:package -- imports/factory/factory-factory-certification.zip
 ```
 
 Validate all curated examples:
 
 ```bash
 npm run validate:examples
+```
+
+Validate all import zips and write report:
+
+```bash
+npm run validate:zips
 ```
 
 ## What it validates
@@ -30,12 +36,30 @@ npm run validate:examples
 | Schema | Each JSON file validates against `schemas/` |
 | Tenant ID | `tenantId` consistent across all artifacts |
 | Mission | `mission.statement`, `owns`, `doesNotOwn` present |
+| Lifecycle | `manifest.lifecycle` required; certified flag vs pass; score drift warnings |
+| Compatibility | `compatibility.json` recommended; matrix minimums when present |
 | Responsibility overlap | No item in both `owns` and `doesNotOwn` |
 | Health | Status is valid enum; `unhealthy` fails |
 | Qualification gates | All 6 required criteria present |
 | Report | `factory-report.md` exists and is non-empty |
-| Fake integration | No undeclared implemented integrations; no fake live dependencies |
+| Fake integration | No undeclared implemented integrations; integration `modes` honesty |
 | Citadel archive | Schema validation when `factory-citadel-archive.json` present |
+
+`factory-report-meta.json` is **not** validated — see [FACTORY_REPORT_METADATA.md](FACTORY_REPORT_METADATA.md).
+
+## Required and optional files
+
+| File | Required |
+|------|----------|
+| `factory-manifest.json` | Yes |
+| `factory-audit.json` | Yes |
+| `factory-health.json` | Yes |
+| `factory-qualification.json` | Yes |
+| `factory-report.md` | Yes |
+| `compatibility.json` | Recommended (warning if missing) |
+| `factory-events.json` | Optional |
+| `factory-objects.json` | Optional |
+| `factory-citadel-archive.json` | Optional |
 
 ## Output
 
@@ -58,16 +82,20 @@ Five dimensions scored 0–100. See [VALIDATION_SCORING.md](VALIDATION_SCORING.m
 
 ```text
 scripts/validate-certification-package.ts   CLI entry
+scripts/package-certification.ts            Canonical zip packager CLI
+scripts/validate-import-zips.ts             Zip trust report
 src/
   load-package.ts       Load directory or zip
   schema-validator.ts   AJV JSON Schema validation
   validator.ts          Business rule checks + scoring
+  compatibility.ts      Matrix version checks
   report.ts             Report generation
+  package-certification.ts  Package create + kit layout check
   types.ts              Shared types
 schemas/                JSON Schema definitions
 ```
 
-## Schemas used
+## Schemas used by validator
 
 | Artifact | Schema |
 |----------|--------|
@@ -75,6 +103,7 @@ schemas/                JSON Schema definitions
 | factory-audit.json | factory-audit.schema.json |
 | factory-health.json | factory-health.schema.json |
 | factory-qualification.json | factory-qualification.schema.json |
+| compatibility.json | compatibility.schema.json |
 | factory-events.json | factory-event.schema.json |
 | factory-objects.json | factory-object.schema.json |
 | factory-citadel-archive.json | factory-citadel-archive.schema.json |
@@ -85,15 +114,19 @@ schemas/                JSON Schema definitions
 |------|----------|
 | `imports/examples/citadel-valid/` | PASS |
 | `imports/examples/horizon-invalid/` | FAIL |
+| `examples/horizon/` | FAIL (intentional reference) |
 
 ## NPM scripts
 
 | Script | Purpose |
-|--------|------|
+|--------|----------|
 | `npm run validate:package -- <path>` | Validate one package |
-| `npm run validate:examples` | Validate curated examples |
+| `npm run validate:examples` | Validate curated CI examples |
+| `npm run validate:zips` | Validate all import zips + write report |
+| `npm run package:certification -- <src> [out]` | Create zip from folder |
 | `npm test` | Run test suite |
 | `npm run build` | Compile TypeScript |
+| `npm run typecheck` | TypeScript check without emit |
 | `npm run lint` | ESLint |
 
 ## Workflow integration
@@ -107,17 +140,11 @@ schemas/                JSON Schema definitions
 6. Repeat until pass
 ```
 
-## Cursor prompt
-
-```text
-Validate the certification package at imports/{tenant}.
-Run: npm run validate:package -- imports/{tenant}
-Review validation-report.md and fix all errors.
-```
-
 ## Related docs
 
 - [CERTIFICATION_PACKAGE_LAYOUT.md](CERTIFICATION_PACKAGE_LAYOUT.md)
 - [VALIDATION_SCORING.md](VALIDATION_SCORING.md)
+- [FACTORY_LIFECYCLE.md](FACTORY_LIFECYCLE.md)
+- [FACTORY_REPORT_METADATA.md](FACTORY_REPORT_METADATA.md)
 - [FACTORY_IMPORT_PROTOCOL.md](FACTORY_IMPORT_PROTOCOL.md)
 - [REPAIR_ORDER.md](REPAIR_ORDER.md)

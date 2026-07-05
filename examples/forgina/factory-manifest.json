@@ -36,11 +36,20 @@
   "integrations": {
     "declared": ["factory"],
     "implemented": ["factory"],
+    "modes": {
+      "factory": "connected"
+    },
     "notes": ""
   },
   "contracts": [
     "certification-package",
     "tenant-manifest"
   ],
-  "standardsVersion": "1.0.0"
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "certified",
+    "qualificationPercent": 92,
+    "certified": true,
+    "updatedAt": "2026-07-05T12:00:00Z"
+  }
 }

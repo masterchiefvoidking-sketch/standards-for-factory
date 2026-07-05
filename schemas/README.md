@@ -15,7 +15,8 @@ All schemas use [JSON Schema draft 2020-12](https://json-schema.org/draft/2020-1
 | factory-event.schema.json | factory-events.json (optional) |
 | factory-object.schema.json | factory-objects.json (optional) |
 | factory-citadel-archive.schema.json | factory-citadel-archive.json (optional) |
-| factory-report.schema.json | factory-report metadata sidecar (optional) |
+| compatibility.schema.json | compatibility.json (optional, recommended) |
+| factory-report.schema.json | factory-report-meta.json (optional sidecar — **not enforced**; see [FACTORY_REPORT_METADATA.md](../docs/FACTORY_REPORT_METADATA.md)) |
 
 ## Validation
 

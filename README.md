@@ -40,6 +40,7 @@ Every tenant repo must eventually produce:
 | `factory-health.json` | Yes |
 | `factory-qualification.json` | Yes |
 | `factory-report.md` | Yes |
+| `compatibility.json` | Recommended |
 | `factory-events.json` | Optional |
 | `factory-objects.json` | Optional |
 | `factory-citadel-archive.json` | Optional |
@@ -68,6 +69,7 @@ npm install
 npm run validate:package -- imports/examples/citadel-valid
 npm run validate:examples
 npm test
+npm run typecheck
 ```
 
 See [docs/VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md).
@@ -97,6 +99,8 @@ See [docs/VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md).
 | [FOUNDATION_CORE_RULES.md](docs/FOUNDATION_CORE_RULES.md) | factory-core allowed/forbidden |
 | [REPOSITORY_BOOTSTRAP.md](docs/REPOSITORY_BOOTSTRAP.md) | One-command tenant bootstrap |
 | [compatibility/README.md](compatibility/README.md) | Ecosystem compatibility matrix |
+| [FACTORY_REPORT_METADATA.md](docs/FACTORY_REPORT_METADATA.md) | Optional report sidecar schema |
+| [repair/REPAIR_PLAN.md](docs/repair/REPAIR_PLAN.md) | Foundation completion repair plan |
 
 ## Tenant bootstrap
 
@@ -111,6 +115,8 @@ Copy `tenant-certification-kit/` into any tenant repo. Paste `prompts/TENANT_CER
 ```bash
 npm run kit:check
 npm run kit:package-example
+npm run package:certification -- imports/examples/citadel-valid imports/examples
+npm run validate:zips
 ```
 
 ## Known ecosystem repos

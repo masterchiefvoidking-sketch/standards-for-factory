@@ -37,6 +37,10 @@
   "integrations": {
     "declared": ["factory", "citadel"],
     "implemented": [],
+    "modes": {
+      "factory": "mock",
+      "citadel": "mock"
+    },
     "notes": "Integrations in progress; none verified at certification time"
   },
   "contracts": [
@@ -44,5 +48,12 @@
     "tenant-manifest",
     "event-envelope"
   ],
-  "standardsVersion": "1.0.0"
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "qualification",
+    "qualificationPercent": 45,
+    "certified": false,
+    "updatedAt": "2026-07-05T12:00:00Z",
+    "notes": "Reference failure example — intentionally unqualified"
+  }
 }

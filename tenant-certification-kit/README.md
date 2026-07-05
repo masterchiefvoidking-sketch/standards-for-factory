@@ -26,7 +26,10 @@ tenant-certification-kit/
 3. Copy templates/* into factory-certification/
 4. Open prompts/TENANT_CERTIFICATION_PROMPT.md in Cursor
 5. Paste the prompt and run certification
-6. Package: npx tsx tenant-certification-kit/scripts/package-certification.ts factory-certification
+6. Package (from factory-standards clone):
+     npm run package:certification -- factory-certification
+   Or from tenant with standards path:
+     FACTORY_STANDARDS_PATH=../standards-for-factory npx tsx tenant-certification-kit/scripts/package-certification.ts factory-certification
 7. Copy zip to factory-standards/imports/<tenantId>/
 8. Validate: npm run validate:package -- imports/<tenantId>
 ```
