@@ -323,6 +323,63 @@ function checkFakeIntegrations(parsed: ParsedPackage): ValidationIssue[] {
   return issues;
 }
 
+function checkIntegrationModes(parsed: ParsedPackage): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const integrations = parsed.manifest?.integrations;
+  if (!integrations) return issues;
+
+  const declared = integrations.declared ?? [];
+  const implemented = new Set(integrations.implemented ?? []);
+  const modes = integrations.modes ?? {};
+
+  for (const name of declared) {
+    const mode = modes[name];
+    if (!mode) {
+      issues.push({
+        code: "integration.mode-missing",
+        severity: "warning",
+        message: `Integration "${name}" has no mode (mock, manual, imported, connected)`,
+        file: "factory-manifest.json",
+      });
+      continue;
+    }
+
+    if (mode === "connected" && !implemented.has(name)) {
+      issues.push({
+        code: "integration.fake-connected-mode",
+        severity: "error",
+        message: `Integration "${name}" mode is connected but not in implemented`,
+        file: "factory-manifest.json",
+      });
+    }
+
+    if (
+      (mode === "mock" || mode === "manual") &&
+      implemented.has(name)
+    ) {
+      issues.push({
+        code: "integration.mode-mismatch",
+        severity: "warning",
+        message: `Integration "${name}" is implemented but mode is ${mode}`,
+        file: "factory-manifest.json",
+      });
+    }
+  }
+
+  for (const name of Object.keys(modes)) {
+    if (!declared.includes(name)) {
+      issues.push({
+        code: "integration.undeclared-mode",
+        severity: "error",
+        message: `Integration mode declared for "${name}" but not in declared list`,
+        file: "factory-manifest.json",
+      });
+    }
+  }
+
+  return issues;
+}
+
 function computeScores(
   contents: PackageContents,
   parsed: ParsedPackage,
@@ -430,6 +487,7 @@ export function validateCertificationPackage(
     ...checkQualificationGates(parsed),
     ...checkReport(parsed),
     ...checkFakeIntegrations(parsed),
+    ...checkIntegrationModes(parsed),
   ];
 
   const allIssues = [...layoutIssues, ...schemaErrors, ...crossIssues];

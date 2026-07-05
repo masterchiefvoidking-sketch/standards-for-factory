@@ -79,7 +79,7 @@ export interface ManifestData {
   mission?: { statement: string; scope?: string };
   owns?: string[];
   doesNotOwn?: string[];
-  integrations?: { declared: string[]; implemented: string[] };
+  integrations?: { declared: string[]; implemented: string[]; modes?: Record<string, string> };
 }
 
 export interface AuditData {

@@ -40,6 +40,10 @@
   "integrations": {
     "declared": ["factory", "horizon"],
     "implemented": ["factory"],
+    "modes": {
+      "factory": "connected",
+      "horizon": "mock"
+    },
     "notes": "Horizon integration declared but not yet implemented at certification time."
   },
   "contracts": [

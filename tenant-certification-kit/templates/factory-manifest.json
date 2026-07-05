@@ -1,7 +1,7 @@
 {
   "protocol": "factory.tenant.v1",
   "protocolVersion": "1.0.0",
-  "generatedAt": "YYYY-MM-DDTHH:MM:SSZ",
+  "generatedAt": "REPLACE_ISO8601",
   "tenant": {
     "id": "TENANT_ID",
     "name": "Tenant Display Name",
@@ -13,31 +13,31 @@
     "name": "repo-name",
     "remoteUrl": "https://github.com/org/repo-name",
     "defaultBranch": "main",
-    "commitSha": "COMMIT_SHA",
+    "commitSha": "REPLACE_GIT_COMMIT_SHA",
     "packageName": "tenant-slug-factory-certification.zip"
   },
   "mission": {
-    "statement": "Clear statement of what this tenant does in the Factory ecosystem",
-    "scope": "Optional scope boundary"
+    "statement": "Clear statement of what this tenant actually does in the Factory ecosystem (min 10 characters).",
+    "scope": "What is explicitly in scope and out of scope."
   },
   "owns": [
     "responsibility.this-tenant-owns"
   ],
   "doesNotOwn": [
-    "responsibility.other-tenant-owns"
+    "responsibility.another-tenant-owns"
   ],
   "capabilities": [
-    "capability.example"
+    "capability.observed-in-repo"
   ],
   "integrations": {
     "declared": [
-      "integration.example"
+      "factory"
     ],
     "implemented": [],
     "modes": {
       "factory": "manual"
     },
-    "notes": "List integrations honestly. Do not claim integrations that are not implemented."
+    "notes": "Honest integration status. Use modes: mock, manual, imported, connected."
   },
   "contracts": [
     "certification-package",

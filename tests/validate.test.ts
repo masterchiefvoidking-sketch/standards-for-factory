@@ -42,7 +42,7 @@ const baseManifest = {
   owns: ["app.core"],
   doesNotOwn: ["archive.storage"],
   capabilities: ["app.core"],
-  integrations: { declared: ["factory"], implemented: ["factory"] },
+  integrations: { declared: ["factory"], implemented: ["factory"], modes: { factory: "connected" } },
   standardsVersion: "1.0.0",
 };
 
@@ -269,5 +269,24 @@ describe("validateCertificationPackage", () => {
     const report = validateCertificationPackage(loadPackage(dir));
     expect(report.pass).toBe(true);
     expect(report.scores.citadelHandoffReadiness).toBe(100);
+  });
+
+  it("fake connected integration mode fails", () => {
+    const files = validPackageFiles();
+    const manifest = {
+      ...baseManifest,
+      integrations: {
+        declared: ["factory"],
+        implemented: [],
+        modes: { factory: "connected" },
+      },
+    };
+    files["factory-manifest.json"] = JSON.stringify(manifest, null, 2);
+    const dir = writeFixture("fake-mode", files);
+    const report = validateCertificationPackage(loadPackage(dir));
+    expect(report.pass).toBe(false);
+    expect(
+      report.issues.some((i) => i.code === "integration.fake-connected-mode")
+    ).toBe(true);
   });
 });

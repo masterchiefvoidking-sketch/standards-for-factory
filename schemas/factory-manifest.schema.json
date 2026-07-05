@@ -135,6 +135,14 @@
           "items": { "type": "string" },
           "uniqueItems": true
         },
+        "modes": {
+          "type": "object",
+          "description": "Honest integration mode per declared integration",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["mock", "manual", "imported", "connected"]
+          }
+        },
         "notes": {
           "type": "string"
         }

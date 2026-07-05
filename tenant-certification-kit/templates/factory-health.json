@@ -1,0 +1,46 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "REPLACE_ISO8601",
+  "tenantId": "TENANT_ID",
+  "status": "unknown",
+  "signals": [
+    {
+      "id": "signal.install",
+      "name": "npm install",
+      "status": "unknown",
+      "message": "Result of npm install at certification time",
+      "category": "build"
+    },
+    {
+      "id": "signal.build",
+      "name": "npm run build",
+      "status": "unknown",
+      "message": "Result of npm run build",
+      "category": "build"
+    },
+    {
+      "id": "signal.tests",
+      "name": "npm test",
+      "status": "unknown",
+      "message": "Result of npm test",
+      "category": "test"
+    },
+    {
+      "id": "signal.lint",
+      "name": "npm run lint",
+      "status": "unknown",
+      "message": "Result of npm run lint",
+      "category": "config"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "factory-standards",
+      "required": true,
+      "status": "unknown",
+      "version": "",
+      "notes": "Reference only; certification does not require live Factory connection"
+    }
+  ]
+}

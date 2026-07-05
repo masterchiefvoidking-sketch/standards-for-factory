@@ -80,6 +80,18 @@ See [docs/VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md).
 | [VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md) | Package validation inspector |
 | [CERTIFICATION_PACKAGE_LAYOUT.md](docs/CERTIFICATION_PACKAGE_LAYOUT.md) | Required package file layout |
 | [VALIDATION_SCORING.md](docs/VALIDATION_SCORING.md) | Readiness scoring model |
+| [TENANT_CERTIFICATION_KIT.md](docs/TENANT_CERTIFICATION_KIT.md) | Official tenant generator kit |
+| [HOW_TO_CERTIFY_A_TENANT.md](docs/HOW_TO_CERTIFY_A_TENANT.md) | Step-by-step certification |
+| [REPO_BY_REPO_WORKFLOW.md](docs/REPO_BY_REPO_WORKFLOW.md) | Repo-by-repo workflow |
+
+## Tenant certification kit
+
+Copy `tenant-certification-kit/` into any tenant repo. Paste `prompts/TENANT_CERTIFICATION_PROMPT.md` in Cursor to generate a certification package.
+
+```bash
+npm run kit:check
+npm run kit:package-example
+```
 
 ## Known ecosystem repos
 
