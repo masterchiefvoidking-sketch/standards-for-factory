@@ -1,0 +1,66 @@
+{
+  "protocol": "factory.qualification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T17:00:00Z",
+  "tenantId": "factory",
+  "loopId": "qual-factory-run-001",
+  "status": "provisional",
+  "iteration": 1,
+  "criteria": [
+    {
+      "id": "crit.manifest-valid",
+      "name": "Manifest validates against schema",
+      "required": true,
+      "result": "met",
+      "evidence": "factory-standards validation PASS score 94/100",
+      "notes": ""
+    },
+    {
+      "id": "crit.audit-pass",
+      "name": "Audit status is pass",
+      "required": true,
+      "result": "unmet",
+      "evidence": "Audit partial — no tests, no backend import path",
+      "notes": "Acceptable for first real certification package"
+    },
+    {
+      "id": "crit.health-acceptable",
+      "name": "Health status is healthy or degraded",
+      "required": true,
+      "result": "met",
+      "evidence": "Health degraded — build/lint pass, tests missing"
+    },
+    {
+      "id": "crit.report-complete",
+      "name": "factory-report.md present and complete",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.package-complete",
+      "name": "All required package files present",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.integration-honesty",
+      "name": "No false integration claims",
+      "required": true,
+      "result": "met",
+      "evidence": "implemented empty; all tenant modes mock; factory-standards manual"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "blocker.no-tests",
+      "description": "No test script or test files",
+      "repairRef": "check.tests"
+    },
+    {
+      "id": "blocker.no-import-runtime",
+      "description": "No API/runtime path to import certification packages",
+      "repairRef": "check.backend"
+    }
+  ],
+  "expiresAt": "2026-08-05T17:00:00Z"
+}
