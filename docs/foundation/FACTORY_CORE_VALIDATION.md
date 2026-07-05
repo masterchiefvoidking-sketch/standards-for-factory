@@ -1,6 +1,6 @@
 # factory-core Validation — Official factory-standards Record
 
-**Validated:** 2026-07-05T17:47:06Z  
+**Validated:** 2026-07-05T17:51:16Z (Prompt 004 re-run)  
 **Standards version:** 1.0.0  
 **Import path:** `imports/factory-core/`  
 **Tenant ID:** `factory-core`  
@@ -29,24 +29,26 @@ Reports: `imports/factory-core/validation-report.json`, `imports/factory-core/va
 
 ---
 
-## Fix Applied Before Validation
+## Step 1 — Package Filename Check (Prompt 004)
 
-| Issue | Fix |
-|-------|-----|
-| Misnamed report file `factory-report.md5.md` | Renamed to **`factory-report.md`** |
-| Standard not loosened | Required filename remains exactly `factory-report.md` |
-
-The validator now auto-renames `factory-report.md5.md` → `factory-report.md` when the correct file is missing (`src/load-package.ts`).
+| Check | Result |
+|-------|--------|
+| `factory-report.md` present | **Yes** |
+| `factory-report.md5.md` present | **No** (not found; no rename needed) |
+| Zip contains `factory-report.md` | **Yes** |
+| Standards loosened | **No** |
 
 ---
 
 ## factory-standards Repo Checks (Prompt 004)
 
+**Re-run:** 2026-07-05T17:51:16Z
+
 | Command | Result |
 |---------|--------|
 | `npm install` | PASS |
 | `npm run validate:package -- imports/factory-core` | **PASS (96/100)** |
-| `npm test` | PASS (15 tests) |
+| `npm test` | PASS (17/17) |
 | `npm run build` | PASS |
 | `npm run lint` | PASS |
 
@@ -76,12 +78,14 @@ The validator now auto-renames `factory-report.md5.md` → `factory-report.md` w
 
 ## Warnings
 
-| Warning | Severity |
-|---------|----------|
-| Prior `factory-report.md5.md` misname (corrected) | Resolved |
-| Audit check documents filename correction | Informational (repairPriority 5) |
+**Current validation (2026-07-05T17:51:16Z):** none
 
-No blocking warnings remain.
+| Note | Status |
+|------|--------|
+| Prior `factory-report.md5.md` misname | Resolved in prior pass; filename correct now |
+| Validator auto-rename guard | Active in `src/load-package.ts` if misname reappears |
+
+No blocking warnings.
 
 ---
 
