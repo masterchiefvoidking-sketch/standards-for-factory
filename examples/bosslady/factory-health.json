@@ -1,0 +1,29 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "bosslady",
+  "status": "healthy",
+  "signals": [
+    {
+      "id": "signal.build",
+      "name": "Build",
+      "status": "ok",
+      "category": "build"
+    },
+    {
+      "id": "signal.tests",
+      "name": "Tests",
+      "status": "ok",
+      "category": "test"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "factory-standards",
+      "required": true,
+      "status": "available",
+      "version": "1.0.0"
+    }
+  ]
+}

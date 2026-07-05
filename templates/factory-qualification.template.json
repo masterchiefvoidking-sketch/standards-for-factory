@@ -1,0 +1,36 @@
+{
+  "protocol": "factory.qualification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "YYYY-MM-DDTHH:MM:SSZ",
+  "tenantId": "TENANT_ID",
+  "loopId": "qual-YYYYMMDD-HHMMSS",
+  "status": "in-progress",
+  "iteration": 1,
+  "criteria": [
+    {
+      "id": "crit.manifest-valid",
+      "name": "Manifest validates against schema",
+      "required": true,
+      "result": "pending",
+      "evidence": "",
+      "notes": ""
+    },
+    {
+      "id": "crit.audit-pass",
+      "name": "Audit status is pass",
+      "required": true,
+      "result": "pending",
+      "evidence": "",
+      "notes": ""
+    },
+    {
+      "id": "crit.health-acceptable",
+      "name": "Health status is healthy or degraded",
+      "required": true,
+      "result": "pending",
+      "evidence": "",
+      "notes": ""
+    }
+  ],
+  "blockers": []
+}

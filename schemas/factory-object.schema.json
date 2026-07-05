@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/factory-object.schema.json",
+  "title": "Factory Object Registry",
+  "description": "Optional registry of domain objects a tenant exposes to Factory.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenantId",
+    "objects"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.certification.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenantId": {
+      "type": "string"
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["entity", "aggregate", "value", "document", "resource", "other"]
+          },
+          "description": { "type": "string" },
+          "schemaRef": {
+            "type": "string",
+            "description": "URI or path to object schema definition"
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["target", "type"],
+              "properties": {
+                "target": { "type": "string" },
+                "type": {
+                  "type": "string",
+                  "enum": ["owns", "references", "contains", "derives-from"]
+                }
+              }
+            }
+          },
+          "exportable": { "type": "boolean", "default": true }
+        }
+      }
+    }
+  }
+}

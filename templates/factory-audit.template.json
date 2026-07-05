@@ -1,0 +1,32 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "YYYY-MM-DDTHH:MM:SSZ",
+  "tenantId": "TENANT_ID",
+  "auditId": "audit-YYYYMMDD-HHMMSS",
+  "status": "pending",
+  "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 0
+  },
+  "checks": [
+    {
+      "id": "check.example",
+      "category": "structure",
+      "title": "Example check title",
+      "description": "What this check verifies",
+      "status": "skip",
+      "evidence": "",
+      "remediation": "",
+      "repairPriority": 3
+    }
+  ],
+  "auditor": {
+    "tool": "cursor",
+    "version": "1.0.0",
+    "operator": "operator-name"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/factory-manifest.schema.json",
+  "title": "Factory Manifest",
+  "description": "Tenant identity, capabilities, and integration declarations for Factory certification.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenant",
+    "repository",
+    "capabilities",
+    "integrations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.tenant.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenant": {
+      "type": "object",
+      "required": ["id", "name", "slug"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable tenant identifier (e.g. citadel, horizon)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable tenant name"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tier": {
+          "type": "string",
+          "enum": ["core", "tenant", "tool", "experimental"]
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": ["name", "remoteUrl"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "remoteUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "defaultBranch": {
+          "type": "string",
+          "default": "main"
+        },
+        "commitSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{7,40}$"
+        },
+        "packageName": {
+          "type": "string",
+          "description": "Certification zip name, e.g. citadel-factory-certification.zip"
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "integrations": {
+      "type": "object",
+      "required": ["declared", "implemented"],
+      "additionalProperties": false,
+      "properties": {
+        "declared": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "implemented": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "contracts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Contract IDs from contracts/ that this tenant implements"
+    },
+    "standardsVersion": {
+      "type": "string",
+      "description": "Version of factory-standards this package was built against"
+    }
+  }
+}

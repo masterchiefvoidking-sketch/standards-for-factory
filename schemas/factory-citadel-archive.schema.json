@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/factory-citadel-archive.schema.json",
+  "title": "Factory Citadel Archive",
+  "description": "Optional Citadel archive handoff metadata for certification packages.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenantId",
+    "archive"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.citadel-handoff.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenantId": {
+      "type": "string"
+    },
+    "archive": {
+      "type": "object",
+      "required": ["id", "format", "checksum", "recordCount"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "format": {
+          "type": "string",
+          "enum": ["citadel-v1", "json-bundle", "tar-gz"]
+        },
+        "checksum": {
+          "type": "string",
+          "description": "SHA-256 hex digest of archive payload"
+        },
+        "recordCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "manifestVersion": { "type": "string" },
+        "exportedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "count"],
+            "properties": {
+              "name": { "type": "string" },
+              "count": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "properties": {
+        "destination": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["ready", "transferred", "verified", "failed"]
+        },
+        "verifiedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "protocol": "factory.qualification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "factory",
+  "loopId": "qual-20260705-120000",
+  "status": "qualified",
+  "iteration": 1,
+  "criteria": [
+    {
+      "id": "crit.manifest-valid",
+      "name": "Manifest validates against schema",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.audit-pass",
+      "name": "Audit status is pass",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.health-acceptable",
+      "name": "Health status is healthy or degraded",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.report-complete",
+      "name": "factory-report.md present and complete",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.package-complete",
+      "name": "All required package files present",
+      "required": true,
+      "result": "met"
+    },
+    {
+      "id": "crit.integration-honesty",
+      "name": "No false integration claims",
+      "required": true,
+      "result": "met"
+    }
+  ],
+  "blockers": [],
+  "qualifiedAt": "2026-07-05T12:00:00Z"
+}

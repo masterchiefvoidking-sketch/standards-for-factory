@@ -1,0 +1,35 @@
+{
+  "protocol": "factory.tenant.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenant": {
+    "id": "horizon",
+    "name": "Horizon",
+    "slug": "horizon",
+    "description": "Horizon / Toolbelt — tooling and integration layer",
+    "tier": "tool"
+  },
+  "repository": {
+    "name": "horizon",
+    "remoteUrl": "https://github.com/factory-ecosystem/horizon",
+    "defaultBranch": "main",
+    "commitSha": "abcdef1234567890abcdef1234567890abcdef12",
+    "packageName": "horizon-factory-certification.zip"
+  },
+  "capabilities": [
+    "toolbelt.core",
+    "integration.bridge",
+    "factory.certification"
+  ],
+  "integrations": {
+    "declared": ["factory", "citadel"],
+    "implemented": [],
+    "notes": "Integrations in progress; none verified at certification time"
+  },
+  "contracts": [
+    "certification-package",
+    "tenant-manifest",
+    "event-envelope"
+  ],
+  "standardsVersion": "1.0.0"
+}

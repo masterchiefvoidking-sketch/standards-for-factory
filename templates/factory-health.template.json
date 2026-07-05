@@ -1,0 +1,32 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "YYYY-MM-DDTHH:MM:SSZ",
+  "tenantId": "TENANT_ID",
+  "status": "unknown",
+  "signals": [
+    {
+      "id": "signal.build",
+      "name": "Build",
+      "status": "unknown",
+      "message": "Build status at certification time",
+      "category": "build"
+    },
+    {
+      "id": "signal.tests",
+      "name": "Tests",
+      "status": "unknown",
+      "message": "Test suite status at certification time",
+      "category": "test"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "dependency.example",
+      "required": false,
+      "status": "unknown",
+      "version": "",
+      "notes": ""
+    }
+  ]
+}
