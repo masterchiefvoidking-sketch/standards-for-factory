@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/factory-report.schema.json",
+  "title": "Factory Report Metadata",
+  "description": "Metadata sidecar for factory-report.md human-readable certification reports.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenantId",
+    "reportId",
+    "format",
+    "status",
+    "summary"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.certification.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenantId": {
+      "type": "string"
+    },
+    "reportId": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string",
+      "const": "markdown"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["complete", "draft", "superseded"]
+    },
+    "summary": {
+      "type": "object",
+      "required": ["qualificationStatus", "auditStatus", "healthStatus"],
+      "additionalProperties": false,
+      "properties": {
+        "qualificationStatus": {
+          "type": "string",
+          "enum": ["qualified", "provisional", "unqualified", "in-progress"]
+        },
+        "auditStatus": {
+          "type": "string",
+          "enum": ["pass", "fail", "partial", "pending"]
+        },
+        "healthStatus": {
+          "type": "string",
+          "enum": ["healthy", "degraded", "unhealthy", "unknown"]
+        },
+        "headline": { "type": "string" },
+        "recommendation": { "type": "string" }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["filename", "present"],
+        "properties": {
+          "filename": { "type": "string" },
+          "present": { "type": "boolean" },
+          "valid": { "type": "boolean" }
+        }
+      }
+    },
+    "markdownPath": {
+      "type": "string",
+      "const": "factory-report.md"
+    }
+  }
+}

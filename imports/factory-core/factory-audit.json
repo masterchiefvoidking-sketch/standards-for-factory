@@ -1,0 +1,104 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T17:45:00Z",
+  "tenantId": "factory-core",
+  "auditId": "audit-factory-core-run-001",
+  "status": "pass",
+  "summary": {
+    "total": 12,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 1
+  },
+  "checks": [
+    {
+      "id": "check.structure",
+      "category": "structure",
+      "title": "SDK module structure",
+      "status": "pass",
+      "evidence": "src/: certification, validators, types, standards, events, objects, health, reports, citadel"
+    },
+    {
+      "id": "check.secrets",
+      "category": "security",
+      "title": "No secrets in repository",
+      "status": "pass"
+    },
+    {
+      "id": "check.schema-alignment",
+      "category": "schema",
+      "title": "Standards compatibility layer",
+      "status": "pass",
+      "evidence": "src/standards/constants.ts mirrors factory-standards layout and enums"
+    },
+    {
+      "id": "check.integration.honesty",
+      "category": "integration",
+      "title": "No fake connected tenant integrations",
+      "status": "pass",
+      "evidence": "Only factory-standards declared; mode imported; no tenant app connected claims"
+    },
+    {
+      "id": "check.no-standards-ownership",
+      "category": "structure",
+      "title": "Does not claim to own factory-standards",
+      "status": "pass",
+      "evidence": "Mission and doesNotOwn explicitly exclude standards rulebook"
+    },
+    {
+      "id": "check.no-tenant-behavior",
+      "category": "structure",
+      "title": "Does not own tenant app behavior",
+      "status": "pass",
+      "evidence": "SDK only; no UI routes or app features"
+    },
+    {
+      "id": "check.install",
+      "category": "health",
+      "title": "npm install",
+      "status": "pass"
+    },
+    {
+      "id": "check.build",
+      "category": "health",
+      "title": "npm run build",
+      "status": "pass",
+      "evidence": "tsup ESM + DTS emit success"
+    },
+    {
+      "id": "check.tests",
+      "category": "health",
+      "title": "npm test",
+      "status": "pass",
+      "evidence": "16/16 vitest tests passed"
+    },
+    {
+      "id": "check.lint",
+      "category": "health",
+      "title": "npm run lint",
+      "status": "pass"
+    },
+    {
+      "id": "check.report-filename",
+      "category": "structure",
+      "title": "Report uses standard filename",
+      "status": "warn",
+      "evidence": "Prior package had factory-report.md5.md misname; corrected to factory-report.md",
+      "repairPriority": 5
+    },
+    {
+      "id": "check.self-audit",
+      "category": "qualification",
+      "title": "Self-audit noted",
+      "status": "pass",
+      "evidence": "Independent standards validation run in factory-standards repo"
+    }
+  ],
+  "auditor": {
+    "tool": "cursor",
+    "version": "factory-standards-prompt-004",
+    "operator": "factory-standards-agent"
+  }
+}

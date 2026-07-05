@@ -1,0 +1,38 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "citadel",
+  "events": [
+    {
+      "id": "event.archive.exported",
+      "name": "ArchiveExported",
+      "description": "Emitted when a Citadel archive export completes",
+      "direction": "emit",
+      "schema": {
+        "type": "object",
+        "required": ["archiveId", "recordCount", "checksum"],
+        "properties": {
+          "archiveId": { "type": "string" },
+          "recordCount": { "type": "integer" },
+          "checksum": { "type": "string" }
+        }
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "event.document.indexed",
+      "name": "DocumentIndexed",
+      "description": "Emitted when a document is indexed in Citadel",
+      "direction": "emit",
+      "schema": {
+        "type": "object",
+        "required": ["documentId"],
+        "properties": {
+          "documentId": { "type": "string" }
+        }
+      },
+      "version": "1.0.0"
+    }
+  ]
+}

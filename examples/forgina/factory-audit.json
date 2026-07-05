@@ -1,0 +1,58 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "forgina",
+  "auditId": "audit-20260705-120000",
+  "status": "pass",
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 0
+  },
+  "checks": [
+    {
+      "id": "check.structure",
+      "category": "structure",
+      "title": "Repository structure valid",
+      "status": "pass"
+    },
+    {
+      "id": "check.secrets",
+      "category": "security",
+      "title": "No secrets in repository",
+      "status": "pass"
+    },
+    {
+      "id": "check.schema",
+      "category": "schema",
+      "title": "Certification artifacts validate",
+      "status": "pass"
+    },
+    {
+      "id": "check.build",
+      "category": "health",
+      "title": "Build succeeds",
+      "status": "pass"
+    },
+    {
+      "id": "check.tests",
+      "category": "health",
+      "title": "Test suite passes",
+      "status": "pass"
+    },
+    {
+      "id": "check.docs",
+      "category": "documentation",
+      "title": "README present",
+      "status": "pass"
+    }
+  ],
+  "auditor": {
+    "tool": "cursor",
+    "version": "1.0.0",
+    "operator": "factory-standards-example"
+  }
+}

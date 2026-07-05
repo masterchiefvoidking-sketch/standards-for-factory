@@ -1,0 +1,11 @@
+{
+  "protocol": "factory.compatibility.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "horizon",
+  "requires": {
+    "factory-core": ">=1.0.0",
+    "factory-standards": ">=1.0.0"
+  },
+  "schema": "1.0"
+}

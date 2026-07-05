@@ -1,0 +1,81 @@
+{
+  "protocol": "factory.tenant.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T17:45:00Z",
+  "tenant": {
+    "id": "factory-core",
+    "name": "factory-core",
+    "slug": "factory-core",
+    "description": "Shared TypeScript SDK (@factory/core) for Factory contracts, validation, events, objects, health, reports, and certification helpers",
+    "tier": "core"
+  },
+  "repository": {
+    "name": "code-factory",
+    "remoteUrl": "https://github.com/masterchiefvoidking-sketch/code-factory",
+    "defaultBranch": "main",
+    "commitSha": "c05a23a11cb8686f3f6ec52e284b5d7fcc7ae0da",
+    "packageName": "factory-core-factory-certification.zip"
+  },
+  "mission": {
+    "statement": "factory-core is the shared SDK layer that implements factory-standards contracts in TypeScript — types, validators, certification helpers, and tenant package tooling. It does not define standards and does not own tenant application behavior.",
+    "scope": "npm package @factory/core. Tenants vendor or install from git. Standards rulebook remains in factory-standards."
+  },
+  "owns": [
+    "sdk.types",
+    "sdk.validators",
+    "sdk.certification-helpers",
+    "sdk.event-envelope",
+    "sdk.object-registry",
+    "sdk.health-helpers",
+    "sdk.report-helpers",
+    "sdk.citadel-helpers",
+    "standards.compatibility-layer"
+  ],
+  "doesNotOwn": [
+    "factory-standards.rulebook",
+    "tenant.app.behavior",
+    "headquarters.shell",
+    "media.playback",
+    "permanent.archive",
+    "reasoning",
+    "engineering.execution",
+    "packaging",
+    "product.invention",
+    "measurements.inside.tenant.products"
+  ],
+  "capabilities": [
+    "certification.package-create",
+    "certification.package-validate",
+    "certification.readiness-score",
+    "validators.manifest",
+    "validators.audit",
+    "validators.health",
+    "validators.qualification",
+    "validators.events",
+    "validators.objects",
+    "validators.citadel-archive"
+  ],
+  "integrations": {
+    "declared": ["factory-standards"],
+    "implemented": ["factory-standards"],
+    "modes": {
+      "factory-standards": "imported"
+    },
+    "notes": "Implements factory-standards enums and layout constants; does not replace or own the standards repo. No live connected tenant apps."
+  },
+  "contracts": [
+    "certification-package",
+    "tenant-manifest",
+    "event-envelope",
+    "object-registry",
+    "citadel-archive"
+  ],
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "operational",
+    "qualificationPercent": 96,
+    "certified": true,
+    "updatedAt": "2026-07-05T17:45:00Z",
+    "notes": "Approved for tenant rollout"
+  }
+}
