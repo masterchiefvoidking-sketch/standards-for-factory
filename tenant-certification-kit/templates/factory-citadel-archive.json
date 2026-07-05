@@ -1,0 +1,21 @@
+{
+  "protocol": "factory.citadel-handoff.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "REPLACE_ISO8601",
+  "tenantId": "TENANT_ID",
+  "archive": {
+    "id": "archive-REPLACE_TIMESTAMP",
+    "format": "citadel-v1",
+    "checksum": "REPLACE_SHA256_HEX",
+    "recordCount": 0,
+    "sizeBytes": 0,
+    "manifestVersion": "1.0.0",
+    "exportedAt": "REPLACE_ISO8601",
+    "collections": [],
+    "notes": "Include only for Citadel tenants with archive handoff."
+  },
+  "handoff": {
+    "destination": "factory-imports",
+    "status": "ready"
+  }
+}

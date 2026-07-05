@@ -1,0 +1,81 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "REPLACE_ISO8601",
+  "tenantId": "TENANT_ID",
+  "auditId": "audit-REPLACE_TIMESTAMP",
+  "status": "pending",
+  "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 0
+  },
+  "checks": [
+    {
+      "id": "check.structure",
+      "category": "structure",
+      "title": "Repository structure documented",
+      "description": "Routes, modules, stores, scripts, tests, docs identified",
+      "status": "pending",
+      "evidence": "",
+      "remediation": "",
+      "repairPriority": 3
+    },
+    {
+      "id": "check.build",
+      "category": "health",
+      "title": "npm run build",
+      "description": "Build command result at certification time",
+      "status": "pending",
+      "evidence": "",
+      "remediation": "",
+      "repairPriority": 2
+    },
+    {
+      "id": "check.tests",
+      "category": "health",
+      "title": "npm test",
+      "description": "Test suite result at certification time",
+      "status": "pending",
+      "evidence": "",
+      "remediation": "",
+      "repairPriority": 2
+    },
+    {
+      "id": "check.lint",
+      "category": "health",
+      "title": "npm run lint",
+      "description": "Lint result at certification time",
+      "status": "pending",
+      "evidence": "",
+      "remediation": "",
+      "repairPriority": 3
+    },
+    {
+      "id": "check.secrets",
+      "category": "security",
+      "title": "No secrets in repository",
+      "status": "pending",
+      "evidence": "",
+      "remediation": "",
+      "repairPriority": 1
+    },
+    {
+      "id": "check.integration.honesty",
+      "category": "integration",
+      "title": "Integration modes honest",
+      "description": "No fake connected integrations",
+      "status": "pending",
+      "evidence": "",
+      "remediation": "",
+      "repairPriority": 1
+    }
+  ],
+  "auditor": {
+    "tool": "cursor",
+    "version": "tenant-certification-kit",
+    "operator": "REPLACE_OPERATOR"
+  }
+}

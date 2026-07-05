@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/factory-manifest.schema.json",
+  "title": "Factory Manifest",
+  "description": "Tenant identity, capabilities, and integration declarations for Factory certification.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenant",
+    "repository",
+    "mission",
+    "owns",
+    "doesNotOwn",
+    "capabilities",
+    "integrations",
+    "lifecycle"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.tenant.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenant": {
+      "type": "object",
+      "required": ["id", "name", "slug"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable tenant identifier (e.g. citadel, horizon)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable tenant name"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tier": {
+          "type": "string",
+          "enum": ["core", "tenant", "tool", "experimental"]
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": ["name", "remoteUrl"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "remoteUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "defaultBranch": {
+          "type": "string",
+          "default": "main"
+        },
+        "commitSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{7,40}$"
+        },
+        "packageName": {
+          "type": "string",
+          "description": "Certification zip name, e.g. citadel-factory-certification.zip"
+        }
+      }
+    },
+    "mission": {
+      "type": "object",
+      "required": ["statement"],
+      "additionalProperties": false,
+      "properties": {
+        "statement": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Clear statement of what this tenant does in Factory"
+        },
+        "scope": {
+          "type": "string",
+          "description": "Optional scope boundary note"
+        }
+      }
+    },
+    "owns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Responsibilities this tenant owns"
+    },
+    "doesNotOwn": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Responsibilities explicitly outside this tenant's scope"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "integrations": {
+      "type": "object",
+      "required": ["declared", "implemented"],
+      "additionalProperties": false,
+      "properties": {
+        "declared": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "implemented": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "modes": {
+          "type": "object",
+          "description": "Honest integration mode per declared integration",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["mock", "manual", "imported", "connected"]
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "contracts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Contract IDs from contracts/ that this tenant implements"
+    },
+    "standardsVersion": {
+      "type": "string",
+      "description": "Version of factory-standards this package was built against"
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["state", "qualificationPercent", "certified", "updatedAt"],
+      "additionalProperties": false,
+      "description": "Current Factory lifecycle state for this repository",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "discovery",
+            "architecture",
+            "construction",
+            "qualification",
+            "certified",
+            "operational",
+            "maintenance",
+            "deprecated",
+            "archived"
+          ]
+        },
+        "qualificationPercent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "certified": {
+          "type": "boolean"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional qualifier, e.g. provisional certification"
+        }
+      }
+    }
+  }
+}

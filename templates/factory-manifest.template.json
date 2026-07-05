@@ -1,0 +1,53 @@
+{
+  "protocol": "factory.tenant.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "YYYY-MM-DDTHH:MM:SSZ",
+  "tenant": {
+    "id": "TENANT_ID",
+    "name": "Tenant Display Name",
+    "slug": "tenant-slug",
+    "description": "Brief description of the tenant application",
+    "tier": "tenant"
+  },
+  "repository": {
+    "name": "repo-name",
+    "remoteUrl": "https://github.com/org/repo-name",
+    "defaultBranch": "main",
+    "commitSha": "COMMIT_SHA",
+    "packageName": "tenant-slug-factory-certification.zip"
+  },
+  "mission": {
+    "statement": "Clear statement of what this tenant does in the Factory ecosystem",
+    "scope": "Optional scope boundary"
+  },
+  "owns": [
+    "responsibility.this-tenant-owns"
+  ],
+  "doesNotOwn": [
+    "responsibility.other-tenant-owns"
+  ],
+  "capabilities": [
+    "capability.example"
+  ],
+  "integrations": {
+    "declared": [
+      "integration.example"
+    ],
+    "implemented": [],
+    "modes": {
+      "factory": "manual"
+    },
+    "notes": "List integrations honestly. Do not claim integrations that are not implemented."
+  },
+  "contracts": [
+    "certification-package",
+    "tenant-manifest"
+  ],
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "qualification",
+    "qualificationPercent": 0,
+    "certified": false,
+    "updatedAt": "YYYY-MM-DDTHH:MM:SSZ"
+  }
+}

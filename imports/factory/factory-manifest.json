@@ -1,0 +1,102 @@
+{
+  "protocol": "factory.tenant.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T17:00:00Z",
+  "tenant": {
+    "id": "factory",
+    "name": "Factory",
+    "slug": "factory",
+    "description": "Titan Campus headquarters shell — spatial UI, Nexus mock infrastructure, Operations mock runtime, and department org layer",
+    "tier": "core"
+  },
+  "repository": {
+    "name": "factory",
+    "remoteUrl": "https://github.com/masterchiefvoidking-sketch/factory",
+    "defaultBranch": "main",
+    "commitSha": "b648a2bfa1d1d1f31d2edac69080e20cf208e2c2",
+    "packageName": "factory-factory-certification.zip"
+  },
+  "mission": {
+    "statement": "Factory is the headquarters shell and shared infrastructure contracts layer for the ecosystem — campus navigation, tenant registry metadata, object/event/activity mocks, operations rhythm, and qualification/import handoff contracts. It does not execute tenant product work.",
+    "scope": "Next.js spatial HQ prototype with in-memory Nexus and Operations runtimes. No live tenant app connections. Certification and standards validation via manual zip import."
+  },
+  "owns": [
+    "headquarters.shell",
+    "tenant.registry",
+    "object.registry",
+    "event.bus",
+    "activity.stream",
+    "qualification.center",
+    "import.export.contracts",
+    "shared.reports",
+    "shared.navigation",
+    "shared.infrastructure.contracts"
+  ],
+  "doesNotOwn": [
+    "media.playback",
+    "permanent.archive",
+    "reasoning",
+    "engineering.execution",
+    "packaging",
+    "product.invention",
+    "measurements.inside.tenant.products"
+  ],
+  "capabilities": [
+    "campus.spatial-navigation",
+    "nexus.mock-object-registry",
+    "nexus.mock-event-bus",
+    "nexus.mock-activity-stream",
+    "nexus.tenant-metadata",
+    "operations.mock-missions",
+    "operations.mock-conveyor",
+    "departments.org-chart",
+    "departments.dashboards",
+    "certification.import-ui-contract"
+  ],
+  "integrations": {
+    "declared": [
+      "factory-standards",
+      "citadel",
+      "forgina",
+      "horizon",
+      "bosslady",
+      "prime",
+      "toolbelt",
+      "forge",
+      "flippy",
+      "fip",
+      "observatory",
+      "sentinel"
+    ],
+    "implemented": [],
+    "modes": {
+      "factory-standards": "manual",
+      "citadel": "mock",
+      "forgina": "mock",
+      "horizon": "mock",
+      "bosslady": "mock",
+      "prime": "mock",
+      "toolbelt": "mock",
+      "forge": "mock",
+      "flippy": "mock",
+      "fip": "mock",
+      "observatory": "mock",
+      "sentinel": "mock"
+    },
+    "notes": "Tenant apps exist as frozen metadata in src/nexus/tenants.ts only. factory-standards validation is manual zip import — no live API. Forgina not referenced in codebase."
+  },
+  "contracts": [
+    "certification-package",
+    "tenant-manifest",
+    "event-envelope",
+    "object-registry"
+  ],
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "operational",
+    "qualificationPercent": 94,
+    "certified": true,
+    "updatedAt": "2026-07-05T17:00:00Z",
+    "notes": "Provisional — qualification status provisional; validation PASS 94/100"
+  }
+}

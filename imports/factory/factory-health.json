@@ -1,0 +1,78 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T17:00:00Z",
+  "tenantId": "factory",
+  "status": "degraded",
+  "signals": [
+    {
+      "id": "signal.install",
+      "name": "npm install",
+      "status": "ok",
+      "message": "338 packages installed successfully",
+      "category": "build"
+    },
+    {
+      "id": "signal.build",
+      "name": "npm run build",
+      "status": "ok",
+      "message": "next build compiled in 5.6s; static export OK",
+      "category": "build"
+    },
+    {
+      "id": "signal.lint",
+      "name": "npm run lint",
+      "status": "ok",
+      "message": "No ESLint warnings or errors",
+      "category": "config"
+    },
+    {
+      "id": "signal.tests",
+      "name": "npm test",
+      "status": "error",
+      "message": "Missing script: test — no test runner configured",
+      "category": "test"
+    },
+    {
+      "id": "signal.runtime",
+      "name": "Application runtime",
+      "status": "warn",
+      "message": "Client-only in-memory singletons; state lost on refresh",
+      "category": "runtime"
+    },
+    {
+      "id": "signal.tenants",
+      "name": "Tenant connections",
+      "status": "ok",
+      "message": "Honestly mock — metadata only in nexus/tenants.ts",
+      "category": "dependency"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "factory-standards",
+      "required": true,
+      "status": "unknown",
+      "version": "1.0.0",
+      "notes": "Manual zip validation workflow; referenced at certification time, not a live runtime dependency"
+    },
+    {
+      "name": "citadel",
+      "required": false,
+      "status": "optional-missing",
+      "notes": "Mock tenant metadata only; mode mock"
+    },
+    {
+      "name": "forgina",
+      "required": false,
+      "status": "optional-missing",
+      "notes": "Not referenced in Factory codebase"
+    },
+    {
+      "name": "next",
+      "required": true,
+      "status": "available",
+      "version": "15.5.20"
+    }
+  ]
+}

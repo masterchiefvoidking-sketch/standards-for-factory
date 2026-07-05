@@ -1,0 +1,25 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "citadel",
+  "objects": [
+    {
+      "id": "object.document",
+      "name": "Document",
+      "kind": "entity",
+      "description": "Indexed document in Citadel vault",
+      "exportable": true
+    },
+    {
+      "id": "object.archive",
+      "name": "Archive",
+      "kind": "aggregate",
+      "description": "Exportable archive bundle",
+      "relationships": [
+        { "target": "object.document", "type": "contains" }
+      ],
+      "exportable": true
+    }
+  ]
+}

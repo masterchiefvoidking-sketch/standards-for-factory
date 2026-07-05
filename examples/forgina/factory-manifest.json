@@ -1,0 +1,46 @@
+{
+  "protocol": "factory.tenant.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenant": {
+    "id": "forgina",
+    "name": "Forgina",
+    "slug": "forgina",
+    "description": "Factory tenant application",
+    "tier": "tenant"
+  },
+  "repository": {
+    "name": "forgina",
+    "remoteUrl": "https://github.com/factory-ecosystem/forgina",
+    "defaultBranch": "main",
+    "commitSha": "1234567890abcdef1234567890abcdef12345678",
+    "packageName": "forgina-factory-certification.zip"
+  },
+  "mission": {
+    "statement": "Forgina provides core tenant application capabilities within Factory.",
+    "scope": "Application features only."
+  },
+  "owns": [
+    "app.core",
+    "factory.certification"
+  ],
+  "doesNotOwn": [
+    "tenant.orchestration",
+    "archive.storage",
+    "toolbelt.core"
+  ],
+  "capabilities": [
+    "app.core",
+    "factory.certification"
+  ],
+  "integrations": {
+    "declared": ["factory"],
+    "implemented": ["factory"],
+    "notes": ""
+  },
+  "contracts": [
+    "certification-package",
+    "tenant-manifest"
+  ],
+  "standardsVersion": "1.0.0"
+}

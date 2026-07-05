@@ -1,0 +1,24 @@
+{
+  "protocol": "factory.citadel-handoff.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "citadel",
+  "archive": {
+    "id": "archive-20260705-120000",
+    "format": "citadel-v1",
+    "checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "recordCount": 1329,
+    "sizeBytes": 52428800,
+    "manifestVersion": "1.0.0",
+    "exportedAt": "2026-07-05T11:55:00Z",
+    "collections": [
+      { "name": "documents", "count": 1240 },
+      { "name": "entities", "count": 89 }
+    ],
+    "notes": "Example checksum; replace with actual SHA-256 in production"
+  },
+  "handoff": {
+    "destination": "factory-imports",
+    "status": "ready"
+  }
+}

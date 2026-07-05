@@ -1,0 +1,50 @@
+{
+  "protocol": "factory.tenant.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenant": {
+    "id": "factory",
+    "name": "Factory",
+    "slug": "factory",
+    "description": "Core orchestrator for the Factory ecosystem",
+    "tier": "core"
+  },
+  "repository": {
+    "name": "factory",
+    "remoteUrl": "https://github.com/factory-ecosystem/factory",
+    "defaultBranch": "main",
+    "commitSha": "f1e2d3c4b5a6978012345678abcdef0123456789",
+    "packageName": "factory-factory-certification.zip"
+  },
+  "mission": {
+    "statement": "Factory orchestrates tenant certification import and qualification tracking.",
+    "scope": "Standards enforcement and import; not tenant application features."
+  },
+  "owns": [
+    "certification.import",
+    "tenant.registry",
+    "qualification.tracking",
+    "standards.enforcement"
+  ],
+  "doesNotOwn": [
+    "archive.storage",
+    "toolbelt.core",
+    "tenant.app.features"
+  ],
+  "capabilities": [
+    "certification.import",
+    "tenant.registry",
+    "qualification.tracking",
+    "standards.enforcement"
+  ],
+  "integrations": {
+    "declared": ["citadel", "horizon", "forgina", "bosslady"],
+    "implemented": ["citadel"],
+    "notes": "Import protocol supports zip delivery via factory-standards/imports"
+  },
+  "contracts": [
+    "certification-package",
+    "tenant-manifest"
+  ],
+  "standardsVersion": "1.0.0"
+}

@@ -1,0 +1,22 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "horizon",
+  "events": [
+    {
+      "id": "event.tool.invoked",
+      "name": "ToolInvoked",
+      "description": "Emitted when a Horizon toolbelt action runs",
+      "direction": "emit",
+      "schema": {
+        "type": "object",
+        "required": ["toolId"],
+        "properties": {
+          "toolId": { "type": "string" }
+        }
+      },
+      "version": "1.0.0"
+    }
+  ]
+}

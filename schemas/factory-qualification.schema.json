@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/factory-qualification.schema.json",
+  "title": "Factory Qualification",
+  "description": "Qualification loop results and certification status for a tenant.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenantId",
+    "loopId",
+    "status",
+    "iteration",
+    "criteria"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.qualification.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenantId": {
+      "type": "string"
+    },
+    "loopId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["qualified", "provisional", "unqualified", "in-progress"]
+    },
+    "iteration": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Qualification loop iteration number"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "required", "result"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "required": { "type": "boolean" },
+          "result": {
+            "type": "string",
+            "enum": ["met", "unmet", "waived", "pending"]
+          },
+          "evidence": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "repairRef": { "type": "string" }
+        }
+      }
+    },
+    "qualifiedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional re-qualification deadline"
+    }
+  }
+}

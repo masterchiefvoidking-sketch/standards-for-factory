@@ -1,0 +1,128 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T17:00:00Z",
+  "tenantId": "factory",
+  "auditId": "audit-20260705-170000",
+  "status": "partial",
+  "summary": {
+    "total": 14,
+    "passed": 9,
+    "failed": 2,
+    "skipped": 1,
+    "warnings": 2
+  },
+  "checks": [
+    {
+      "id": "check.structure",
+      "category": "structure",
+      "title": "Repository structure documented",
+      "description": "src/app, src/nexus, src/operations, src/departments, src/domain, src/context, src/components",
+      "status": "pass",
+      "evidence": "56 TypeScript files across 18 directories"
+    },
+    {
+      "id": "check.routes",
+      "category": "structure",
+      "title": "Routes identified",
+      "description": "Next.js App Router — single route with client-side spatial navigation",
+      "status": "pass",
+      "evidence": "src/app/page.tsx (null), layout.tsx wraps CampusShell; LocationView maps buildingId to interiors"
+    },
+    {
+      "id": "check.secrets",
+      "category": "security",
+      "title": "No committed secrets",
+      "status": "pass",
+      "evidence": "No .env files in repo; clearance is UI mock only"
+    },
+    {
+      "id": "check.integration.honesty",
+      "category": "integration",
+      "title": "No fake live tenant connections",
+      "status": "pass",
+      "evidence": "integrations.implemented empty; all tenant modes mock; factory-standards manual"
+    },
+    {
+      "id": "check.fake-claims",
+      "category": "integration",
+      "title": "In-app copy does not falsely claim live integrations",
+      "status": "warn",
+      "evidence": "BossLady wall copy claims '47 tests passing' but no test suite exists; seed missions mark registry tasks done while UI is mock-only",
+      "repairPriority": 4
+    },
+    {
+      "id": "check.owns-boundary",
+      "category": "structure",
+      "title": "Factory does not pretend to own tenant product work",
+      "status": "pass",
+      "evidence": "doesNotOwn lists archive, reasoning, engineering execution, packaging, invention, tenant measurements"
+    },
+    {
+      "id": "check.dead-code",
+      "category": "structure",
+      "title": "Orphaned components identified",
+      "status": "warn",
+      "evidence": "OperationsCenterInterior.tsx never imported; operations-center routes to OperationsFloorInterior",
+      "repairPriority": 4
+    },
+    {
+      "id": "check.install",
+      "category": "health",
+      "title": "npm install",
+      "status": "pass",
+      "evidence": "338 packages installed; 2 moderate audit vulnerabilities"
+    },
+    {
+      "id": "check.build",
+      "category": "health",
+      "title": "npm run build",
+      "status": "pass",
+      "evidence": "next build exit 0; static / and /_not-found routes"
+    },
+    {
+      "id": "check.lint",
+      "category": "health",
+      "title": "npm run lint",
+      "status": "pass",
+      "evidence": "next lint exit 0; no ESLint warnings"
+    },
+    {
+      "id": "check.tests",
+      "category": "health",
+      "title": "npm test",
+      "status": "fail",
+      "evidence": "No test script in package.json; zero test files",
+      "remediation": "Add vitest or jest with minimal smoke tests for nexus/operations singletons",
+      "repairPriority": 2
+    },
+    {
+      "id": "check.docs",
+      "category": "documentation",
+      "title": "README documents architecture",
+      "status": "pass",
+      "evidence": "README.md describes four layers and department mapping"
+    },
+    {
+      "id": "check.certification-kit",
+      "category": "qualification",
+      "title": "Certification package generated",
+      "status": "pass",
+      "evidence": "factory-certification/ artifacts created per factory-standards kit"
+    },
+    {
+      "id": "check.backend",
+      "category": "integration",
+      "title": "No backend/API routes",
+      "status": "fail",
+      "evidence": "No app/api routes; all state in-memory; cannot import certification packages at runtime yet",
+      "remediation": "Wire Factory import UI to factory-standards validation contract (future; not required for first package)",
+      "repairPriority": 3
+    }
+  ],
+  "auditor": {
+    "tool": "cursor",
+    "version": "factory-certification-run-001",
+    "operator": "factory-standards-agent"
+  }
+}

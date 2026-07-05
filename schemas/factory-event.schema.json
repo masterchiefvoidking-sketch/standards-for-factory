@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/factory-event.schema.json",
+  "title": "Factory Event Catalog",
+  "description": "Optional catalog of events a tenant emits or consumes.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenantId",
+    "events"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.certification.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenantId": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "direction", "schema"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "direction": {
+            "type": "string",
+            "enum": ["emit", "consume", "both"]
+          },
+          "schema": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": { "type": "string", "const": "object" },
+              "required": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "properties": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          },
+          "version": { "type": "string" },
+          "deprecated": { "type": "boolean", "default": false }
+        }
+      }
+    }
+  }
+}

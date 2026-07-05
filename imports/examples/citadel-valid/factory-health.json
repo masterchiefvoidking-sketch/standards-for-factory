@@ -1,0 +1,44 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T12:00:00Z",
+  "tenantId": "citadel",
+  "status": "degraded",
+  "signals": [
+    {
+      "id": "signal.build",
+      "name": "Build",
+      "status": "ok",
+      "message": "Build completed successfully",
+      "category": "build"
+    },
+    {
+      "id": "signal.tests",
+      "name": "Tests",
+      "status": "warn",
+      "message": "98% pass rate; 2 flaky archive tests",
+      "category": "test"
+    },
+    {
+      "id": "signal.archive",
+      "name": "Archive Export",
+      "status": "ok",
+      "message": "Export pipeline operational",
+      "category": "runtime"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "factory-standards",
+      "required": true,
+      "status": "available",
+      "version": "1.0.0"
+    },
+    {
+      "name": "horizon",
+      "required": false,
+      "status": "optional-missing",
+      "notes": "Declared integration not yet connected"
+    }
+  ]
+}
