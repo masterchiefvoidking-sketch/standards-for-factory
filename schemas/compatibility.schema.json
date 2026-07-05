@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factory.standards/schemas/compatibility.schema.json",
+  "title": "Factory Compatibility",
+  "description": "Version requirements declared in a certification package.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "protocolVersion",
+    "generatedAt",
+    "tenantId",
+    "requires",
+    "schema"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "const": "factory.compatibility.v1"
+    },
+    "protocolVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenantId": {
+      "type": "string"
+    },
+    "requires": {
+      "type": "object",
+      "required": ["factory-core", "factory-standards"],
+      "additionalProperties": false,
+      "properties": {
+        "factory-core": {
+          "type": "string",
+          "pattern": "^>=\\d+\\.\\d+\\.\\d+$"
+        },
+        "factory-standards": {
+          "type": "string",
+          "pattern": "^>=\\d+\\.\\d+\\.\\d+$"
+        }
+      }
+    },
+    "schema": {
+      "type": "string",
+      "description": "Certification schema major version",
+      "pattern": "^\\d+\\.\\d+$"
+    }
+  }
+}

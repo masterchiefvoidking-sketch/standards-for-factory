@@ -70,5 +70,12 @@
     "object-registry",
     "citadel-archive"
   ],
-  "standardsVersion": "1.0.0"
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "operational",
+    "qualificationPercent": 96,
+    "certified": true,
+    "updatedAt": "2026-07-05T17:45:00Z",
+    "notes": "Approved for tenant rollout"
+  }
 }

@@ -91,5 +91,12 @@
     "event-envelope",
     "object-registry"
   ],
-  "standardsVersion": "1.0.0"
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "operational",
+    "qualificationPercent": 94,
+    "certified": true,
+    "updatedAt": "2026-07-05T17:00:00Z",
+    "notes": "Provisional — qualification status provisional; validation PASS 94/100"
+  }
 }

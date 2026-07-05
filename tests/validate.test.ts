@@ -44,6 +44,12 @@ const baseManifest = {
   capabilities: ["app.core"],
   integrations: { declared: ["factory"], implemented: ["factory"], modes: { factory: "connected" } },
   standardsVersion: "1.0.0",
+  lifecycle: {
+    state: "certified",
+    qualificationPercent: 96,
+    certified: true,
+    updatedAt: "2026-07-05T12:00:00Z",
+  },
 };
 
 const baseAudit = {
@@ -120,6 +126,21 @@ function validPackageFiles(): Record<string, string> {
     "factory-health.json": JSON.stringify(baseHealth, null, 2),
     "factory-qualification.json": JSON.stringify(baseQualification, null, 2),
     "factory-report.md": baseReport,
+    "compatibility.json": JSON.stringify(
+      {
+        protocol: "factory.compatibility.v1",
+        protocolVersion: "1.0.0",
+        generatedAt: "2026-07-05T12:00:00Z",
+        tenantId: "test",
+        requires: {
+          "factory-core": ">=1.0.0",
+          "factory-standards": ">=1.0.0",
+        },
+        schema: "1.0",
+      },
+      null,
+      2
+    ),
   };
 }
 
@@ -246,6 +267,21 @@ describe("validateCertificationPackage", () => {
     );
     files["factory-qualification.json"] = JSON.stringify(
       { ...baseQualification, tenantId: "citadel" },
+      null,
+      2
+    );
+    files["compatibility.json"] = JSON.stringify(
+      {
+        protocol: "factory.compatibility.v1",
+        protocolVersion: "1.0.0",
+        generatedAt: "2026-07-05T12:00:00Z",
+        tenantId: "citadel",
+        requires: {
+          "factory-core": ">=1.0.0",
+          "factory-standards": ">=1.0.0",
+        },
+        schema: "1.0",
+      },
       null,
       2
     );

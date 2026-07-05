@@ -1,0 +1,88 @@
+{
+  "matrixVersion": "1.0.0",
+  "updatedAt": "2026-07-05T18:00:00Z",
+  "standardsVersion": "1.0.0",
+  "coreVersion": "1.0.0",
+  "repositories": {
+    "factory-standards": {
+      "role": "law",
+      "requires": {}
+    },
+    "factory-core": {
+      "role": "sdk",
+      "requires": {
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "factory": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "citadel": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "forgina": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "bosslady": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "horizon": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "flippy": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "fip": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "observatory": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "sentinel": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    },
+    "forge": {
+      "role": "application",
+      "requires": {
+        "factory-core": ">=1.0.0",
+        "factory-standards": ">=1.0.0"
+      }
+    }
+  }
+}

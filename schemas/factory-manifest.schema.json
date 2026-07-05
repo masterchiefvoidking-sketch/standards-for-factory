@@ -14,7 +14,8 @@
     "owns",
     "doesNotOwn",
     "capabilities",
-    "integrations"
+    "integrations",
+    "lifecycle"
   ],
   "additionalProperties": false,
   "properties": {
@@ -156,6 +157,44 @@
     "standardsVersion": {
       "type": "string",
       "description": "Version of factory-standards this package was built against"
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["state", "qualificationPercent", "certified", "updatedAt"],
+      "additionalProperties": false,
+      "description": "Current Factory lifecycle state for this repository",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "discovery",
+            "architecture",
+            "construction",
+            "qualification",
+            "certified",
+            "operational",
+            "maintenance",
+            "deprecated",
+            "archived"
+          ]
+        },
+        "qualificationPercent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "certified": {
+          "type": "boolean"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional qualifier, e.g. provisional certification"
+        }
+      }
     }
   }
 }

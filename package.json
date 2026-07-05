@@ -10,7 +10,8 @@
     "validate:package": "tsx scripts/validate-certification-package.ts",
     "validate:examples": "tsx scripts/validate-examples.ts",
     "kit:check": "tsx scripts/kit-check.ts",
-    "kit:package-example": "tsx scripts/kit-package-example.ts"
+    "kit:package-example": "tsx scripts/kit-package-example.ts",
+    "bootstrap": "tsx scripts/factory-bootstrap.ts"
   },
   "engines": {
     "node": ">=18"

@@ -23,6 +23,7 @@ Place extracted contents or zips in `factory-standards/imports/{tenant}/`.
 | `factory-health.json` | JSON | `schemas/factory-health.schema.json` |
 | `factory-qualification.json` | JSON | `schemas/factory-qualification.schema.json` |
 | `factory-report.md` | Markdown | _(presence + non-empty)_ |
+| `compatibility.json` | JSON | `schemas/compatibility.schema.json` _(recommended)_ |
 
 All required files must exist at the zip root (or single top-level directory inside the zip).
 
@@ -45,6 +46,7 @@ All required files must exist at the zip root (or single top-level directory ins
 | `doesNotOwn` | Responsibilities explicitly outside scope |
 | `integrations.declared` | Integrations the tenant intends to support |
 | `integrations.implemented` | Integrations verified at certification time |
+| `lifecycle` | Current lifecycle state, qualification %, certified flag |
 
 `owns` and `doesNotOwn` must not overlap.
 
@@ -77,6 +79,7 @@ citadel-factory-certification.zip
 ├── factory-health.json
 ├── factory-qualification.json
 ├── factory-report.md
+├── compatibility.json               # recommended
 ├── factory-events.json              # optional
 ├── factory-objects.json             # optional
 └── factory-citadel-archive.json     # optional

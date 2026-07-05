@@ -1,5 +1,6 @@
 import type {
   AuditData,
+  CompatibilityData,
   HealthData,
   ManifestData,
   ParsedPackage,
@@ -16,6 +17,7 @@ import {
 import type { PackageContents } from "./types.js";
 import { readFileText } from "./load-package.js";
 import { validateAgainstSchema } from "./schema-validator.js";
+import { checkCompatibility } from "./compatibility.js";
 
 const ACCEPTABLE_HEALTH = new Set(["healthy", "degraded"]);
 const VALID_HEALTH_STATUSES = new Set([
@@ -60,6 +62,9 @@ function parsePackage(contents: PackageContents): ParsedPackage {
   const qualification = rawJson[
     "factory-qualification.json"
   ] as QualificationData | undefined;
+  const compatibility = rawJson[
+    "compatibility.json"
+  ] as CompatibilityData | undefined;
   const citadelArchive = rawJson[
     "factory-citadel-archive.json"
   ] as { tenantId: string } | undefined;
@@ -72,6 +77,7 @@ function parsePackage(contents: PackageContents): ParsedPackage {
     audit,
     health,
     qualification,
+    compatibility,
     citadelArchive,
     reportMarkdown,
     rawJson,
@@ -380,6 +386,57 @@ function checkIntegrationModes(parsed: ParsedPackage): ValidationIssue[] {
   return issues;
 }
 
+function checkLifecycle(
+  parsed: ParsedPackage,
+  pass: boolean,
+  overallScore: number
+): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const lifecycle = parsed.manifest?.lifecycle;
+
+  if (!lifecycle) {
+    issues.push({
+      code: "lifecycle.missing",
+      severity: "error",
+      message: "Manifest lifecycle is required",
+      file: "factory-manifest.json",
+    });
+    return issues;
+  }
+
+  if (lifecycle.certified && !pass) {
+    issues.push({
+      code: "lifecycle.certified-mismatch",
+      severity: "warning",
+      message:
+        "lifecycle.certified is true but package validation did not pass",
+      file: "factory-manifest.json",
+    });
+  }
+
+  if (!lifecycle.certified && pass) {
+    issues.push({
+      code: "lifecycle.certified-mismatch",
+      severity: "warning",
+      message:
+        "lifecycle.certified is false but package validation passed — update lifecycle",
+      file: "factory-manifest.json",
+    });
+  }
+
+  const delta = Math.abs(lifecycle.qualificationPercent - overallScore);
+  if (delta > 10) {
+    issues.push({
+      code: "lifecycle.qualification-drift",
+      severity: "warning",
+      message: `lifecycle.qualificationPercent (${lifecycle.qualificationPercent}) differs from validation overall score (${overallScore}) by more than 10`,
+      file: "factory-manifest.json",
+    });
+  }
+
+  return issues;
+}
+
 function computeScores(
   contents: PackageContents,
   parsed: ParsedPackage,
@@ -495,7 +552,25 @@ export function validateCertificationPackage(
   const warnings = allIssues.filter((i) => i.severity === "warning");
 
   const scores = computeScores(contents, parsed, errors, warnings);
-  const pass = errors.length === 0;
+
+  const matrixKey =
+    parsed.manifest?.tenant?.slug ?? parsed.manifest?.tenant?.id ?? undefined;
+  const lifecycleIssues = checkLifecycle(parsed, errors.length === 0, scores.overall);
+  const compatibilityIssues = checkCompatibility(
+    parsed.compatibility,
+    parsed.manifest?.tenant?.id,
+    matrixKey
+  );
+
+  const finalIssues = [
+    ...errors,
+    ...warnings,
+    ...lifecycleIssues,
+    ...compatibilityIssues,
+  ];
+  const finalErrors = finalIssues.filter((i) => i.severity === "error");
+  const finalWarnings = finalIssues.filter((i) => i.severity === "warning");
+  const pass = finalErrors.length === 0;
 
   return {
     packagePath: contents.rootDir,
@@ -504,9 +579,9 @@ export function validateCertificationPackage(
     tenantId: parsed.manifest?.tenant?.id ?? null,
     missingFiles,
     schemaErrors: [...schemaErrors],
-    issues: errors,
-    warnings,
+    issues: finalErrors,
+    warnings: finalWarnings,
     scores,
-    nextRequiredFix: pickNextFix(errors, warnings),
+    nextRequiredFix: pickNextFix(finalErrors, finalWarnings),
   };
 }

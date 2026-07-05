@@ -32,6 +32,10 @@ interface TenantIdFile {
   tenantId?: string;
 }
 
+interface CompatibilityShape {
+  tenantId?: string;
+}
+
 function readJson<T>(filePath: string): T | null {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
@@ -83,12 +87,13 @@ export function prePackageChecks(sourceDir: string): ValidationIssue[] {
     "factory-health.json",
     "factory-qualification.json",
     "factory-citadel-archive.json",
+    "compatibility.json",
   ];
 
   for (const file of tenantIdFiles) {
     const filePath = path.join(sourceDir, file);
     if (!fs.existsSync(filePath)) continue;
-    const data = readJson<TenantIdFile>(filePath);
+    const data = readJson<TenantIdFile | CompatibilityShape>(filePath);
     if (data?.tenantId && data.tenantId !== tenantId) {
       issues.push({
         code: "package.tenant-mismatch",
@@ -206,6 +211,7 @@ export const KIT_REQUIRED_PATHS = [
   "tenant-certification-kit/templates/factory-qualification.json",
   "tenant-certification-kit/templates/factory-report.md",
   "tenant-certification-kit/templates/factory-citadel-archive.json",
+  "tenant-certification-kit/templates/compatibility.json",
   "tenant-certification-kit/scripts/package-certification.ts",
 ] as const;
 

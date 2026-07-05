@@ -45,5 +45,11 @@
     "tenant-manifest",
     "event-envelope"
   ],
-  "standardsVersion": "1.0.0"
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "construction",
+    "qualificationPercent": 45,
+    "certified": false,
+    "updatedAt": "2026-07-05T12:00:00Z"
+  }
 }

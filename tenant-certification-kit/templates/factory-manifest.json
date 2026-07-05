@@ -43,5 +43,11 @@
     "certification-package",
     "tenant-manifest"
   ],
-  "standardsVersion": "1.0.0"
+  "standardsVersion": "1.0.0",
+  "lifecycle": {
+    "state": "qualification",
+    "qualificationPercent": 0,
+    "certified": false,
+    "updatedAt": "REPLACE_ISO8601"
+  }
 }

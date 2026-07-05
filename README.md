@@ -1,5 +1,11 @@
 # factory-standards
 
+| | |
+|---|---|
+| **Factory Lifecycle** | Operational |
+| **Qualification** | 100% |
+| **Certified** | YES |
+
 Standards repository for the Factory ecosystem.
 
 This repo does **not** contain tenant application code. It defines contracts, schemas, protocols, audit standards, certification package formats, tenant manifests, integration rules, and qualification loops.
@@ -84,6 +90,19 @@ See [docs/VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md).
 | [HOW_TO_CERTIFY_A_TENANT.md](docs/HOW_TO_CERTIFY_A_TENANT.md) | Step-by-step certification |
 | [REPO_BY_REPO_WORKFLOW.md](docs/REPO_BY_REPO_WORKFLOW.md) | Repo-by-repo workflow |
 | [FACTORY_CORE_VALIDATION.md](docs/foundation/FACTORY_CORE_VALIDATION.md) | factory-core foundation approval |
+| [FACTORY_ROADMAP.md](docs/FACTORY_ROADMAP.md) | Master execution plan |
+| [FACTORY_LIFECYCLE.md](docs/FACTORY_LIFECYCLE.md) | Repository lifecycle states |
+| [SUPREME_COURT.md](docs/SUPREME_COURT.md) | Standards as constitutional authority |
+| [FOUNDATION_STABILITY.md](docs/FOUNDATION_STABILITY.md) | Foundation repos change slowly |
+| [FOUNDATION_CORE_RULES.md](docs/FOUNDATION_CORE_RULES.md) | factory-core allowed/forbidden |
+| [REPOSITORY_BOOTSTRAP.md](docs/REPOSITORY_BOOTSTRAP.md) | One-command tenant bootstrap |
+| [compatibility/README.md](compatibility/README.md) | Ecosystem compatibility matrix |
+
+## Tenant bootstrap
+
+```bash
+npm run bootstrap -- --tenant citadel --target ../citadel
+```
 
 ## Tenant certification kit
 

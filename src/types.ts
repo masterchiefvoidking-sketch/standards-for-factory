@@ -39,6 +39,7 @@ export const REQUIRED_FILES = [
 ] as const;
 
 export const OPTIONAL_FILES = [
+  "compatibility.json",
   "factory-events.json",
   "factory-objects.json",
   "factory-citadel-archive.json",
@@ -63,6 +64,7 @@ export const SCHEMA_MAP: Record<string, string> = {
   "factory-audit.json": "factory-audit.schema.json",
   "factory-health.json": "factory-health.schema.json",
   "factory-qualification.json": "factory-qualification.schema.json",
+  "compatibility.json": "compatibility.schema.json",
   "factory-events.json": "factory-event.schema.json",
   "factory-objects.json": "factory-object.schema.json",
   "factory-citadel-archive.json": "factory-citadel-archive.schema.json",
@@ -74,12 +76,30 @@ export interface PackageContents {
   cleanup?: () => void;
 }
 
+export interface LifecycleData {
+  state: string;
+  qualificationPercent: number;
+  certified: boolean;
+  updatedAt: string;
+  notes?: string;
+}
+
 export interface ManifestData {
   tenant: { id: string; slug: string; name: string };
   mission?: { statement: string; scope?: string };
   owns?: string[];
   doesNotOwn?: string[];
   integrations?: { declared: string[]; implemented: string[]; modes?: Record<string, string> };
+  lifecycle?: LifecycleData;
+}
+
+export interface CompatibilityData {
+  tenantId: string;
+  requires: {
+    "factory-core": string;
+    "factory-standards": string;
+  };
+  schema: string;
 }
 
 export interface AuditData {
@@ -109,6 +129,7 @@ export interface ParsedPackage {
   audit?: AuditData;
   health?: HealthData;
   qualification?: QualificationData;
+  compatibility?: CompatibilityData;
   citadelArchive?: CitadelArchiveData;
   reportMarkdown?: string;
   rawJson: Record<string, unknown>;
