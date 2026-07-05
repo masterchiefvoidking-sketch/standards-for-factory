@@ -83,6 +83,7 @@ See [docs/VALIDATION_ENGINE.md](docs/VALIDATION_ENGINE.md).
 | [TENANT_CERTIFICATION_KIT.md](docs/TENANT_CERTIFICATION_KIT.md) | Official tenant generator kit |
 | [HOW_TO_CERTIFY_A_TENANT.md](docs/HOW_TO_CERTIFY_A_TENANT.md) | Step-by-step certification |
 | [REPO_BY_REPO_WORKFLOW.md](docs/REPO_BY_REPO_WORKFLOW.md) | Repo-by-repo workflow |
+| [FACTORY_CORE_VALIDATION.md](docs/foundation/FACTORY_CORE_VALIDATION.md) | factory-core foundation approval |
 
 ## Tenant certification kit
 

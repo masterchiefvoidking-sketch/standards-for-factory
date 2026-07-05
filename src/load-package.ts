@@ -7,7 +7,19 @@ import { OPTIONAL_FILES, REQUIRED_FILES } from "./types.js";
 
 const ALL_FILES = [...REQUIRED_FILES, ...OPTIONAL_FILES];
 
+/** Fix common misname: factory-report.md5.md → factory-report.md */
+export function fixMisnamedReportFile(dir: string): boolean {
+  const wrong = path.join(dir, "factory-report.md5.md");
+  const right = path.join(dir, "factory-report.md");
+  if (!fs.existsSync(right) && fs.existsSync(wrong)) {
+    fs.renameSync(wrong, right);
+    return true;
+  }
+  return false;
+}
+
 function readDirPackage(dir: string): PackageContents {
+  fixMisnamedReportFile(dir);
   const files = new Map<string, string>();
 
   for (const name of ALL_FILES) {
@@ -32,6 +44,8 @@ function extractZipPackage(zipPath: string): PackageContents {
   if (subdirs.length === 1 && entries.length === 1) {
     rootDir = path.join(tempDir, subdirs[0].name);
   }
+
+  fixMisnamedReportFile(rootDir);
 
   const contents = readDirPackage(rootDir);
   contents.cleanup = () => {

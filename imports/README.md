@@ -10,6 +10,7 @@ Factory Standards does **not** fetch tenant repos automatically. Packages arrive
 imports/
   citadel/     # citadel-factory-certification.zip
   factory/     # factory-factory-certification.zip
+  factory-core/  # factory-core-factory-certification.zip (shared SDK)
   forgina/     # forgina-factory-certification.zip
   horizon/     # horizon-factory-certification.zip
   bosslady/    # bosslady-factory-certification.zip

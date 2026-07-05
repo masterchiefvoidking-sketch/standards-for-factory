@@ -1,0 +1,44 @@
+{
+  "protocol": "factory.certification.v1",
+  "protocolVersion": "1.0.0",
+  "generatedAt": "2026-07-05T17:45:00Z",
+  "tenantId": "factory-core",
+  "status": "healthy",
+  "signals": [
+    {
+      "id": "signal.install",
+      "name": "npm install",
+      "status": "ok",
+      "category": "build"
+    },
+    {
+      "id": "signal.build",
+      "name": "npm run build",
+      "status": "ok",
+      "message": "tsup build + DTS success",
+      "category": "build"
+    },
+    {
+      "id": "signal.tests",
+      "name": "npm test",
+      "status": "ok",
+      "message": "16 tests passed",
+      "category": "test"
+    },
+    {
+      "id": "signal.lint",
+      "name": "npm run lint",
+      "status": "ok",
+      "category": "config"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "factory-standards",
+      "required": true,
+      "status": "available",
+      "version": "1.0.0",
+      "notes": "Compatibility layer implements standards enums; validation run in factory-standards repo"
+    }
+  ]
+}
